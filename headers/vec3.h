@@ -9,7 +9,7 @@ typedef struct Vec3
 
 } Vec3;
 
-typedef Vec3 Points;
+typedef Vec3 Point3;
 
 // ---------------- Unary ----------------
 
