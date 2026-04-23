@@ -1,9 +1,5 @@
 #include "../headers/hittable_list.h"
 
-#include "hittable_list.h"
-#include <stdlib.h>
-#include "../include/qrtc.h"
-
 // ---------------- Internal ----------------
 
 static bool ResizeHittableList(HittableList* list)

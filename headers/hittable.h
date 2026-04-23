@@ -30,16 +30,6 @@ bool Hit(
     float ray_tmin, 
     float ray_tmax, 
     HitRecord* h_rec
-)
-{
-    switch (hit_obj->type)
-    {
-        case SPHERE:
-            return HitSphere(&(hit_obj->obj.sphere), r, ray_tmin, ray_tmax, h_rec);
-
-        default:
-            return false;
-    }
-}
+);
 
 #endif
