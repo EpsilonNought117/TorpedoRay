@@ -43,6 +43,8 @@ bool AddToHittableList(
     Hittable obj
 )
 {
+    QRTC_ASSERT(list != NULL);
+
     if (list->size == list->capacity)
     {
         if (!ResizeHittableList(list))
