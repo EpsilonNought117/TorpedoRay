@@ -13,6 +13,7 @@
 #include <math.h>
 #include <string.h>
 #include <inttypes.h>
+#include <stdbool.h>
 
 /****************************************************************************************************/
 /**************************   COMPILER, OS and CPU-ISA SPECIFIC HEADERS   ***************************/
