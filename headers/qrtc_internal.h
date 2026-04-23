@@ -6,7 +6,7 @@
 // ---------------- Constants ----------------
 
 // Use HUGE_VALF for true IEEE float infinity
-static const float QRTC_INFINITY = HUGE_VALF;
+static const float QRTC_INFINITY = INFINITY;
 static const float QRTC_PI = 3.1415926535897932385f;
 
 // ---------------- Utility Functions ----------------

@@ -6,6 +6,7 @@
 #include "../headers/sphere.h"
 #include "../headers/hittable.h"
 #include "../headers/qrtc_internal.h"
+#include "../headers/interval.h"
 
 #include <stdio.h>
 #include <inttypes.h>
