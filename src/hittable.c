@@ -16,3 +16,23 @@ bool Hit(
             return false;
     }
 }
+
+Hittable InitHittableObject(
+    HittableObjType obj_type,
+    const void* obj_ptr
+)
+{
+    Hittable temp;
+
+    switch(obj_type)
+    {
+        case SPHERE:
+        {
+            temp.type = obj_type;
+            temp.obj.sphere = *(const Sphere*)obj_ptr;
+            break;
+        }
+    }
+
+    return temp;
+}

@@ -9,12 +9,12 @@
 #include "color.h"
 
 typedef struct Camera
-{
+{    
+    size_t image_height, image_width;
     Point3 center, pixel00_loc;
     Vec3 pixel_delta_u, pixel_delta_v;
-    size_t image_height, image_width;
     float aspect_ratio, focal_length;
-    float viewport_width;
+    float viewport_height, viewport_width;
 
 } Camera;
 
@@ -29,7 +29,8 @@ void InitCamera(
 
 void RenderCameraWorld(
     const Camera* cam, 
-    const HittableList* world
+    const HittableList* world,
+    uint32_t maxval
 );
 
 #endif

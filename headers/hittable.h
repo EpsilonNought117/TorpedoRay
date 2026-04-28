@@ -25,6 +25,12 @@ typedef struct Hittable
 
 } Hittable;
 
+
+Hittable InitHittableObject(
+    HittableObjType obj_type,
+    const void* obj_ptr
+);
+
 bool Hit(
     const Hittable* hit_obj, 
     const Ray* r,

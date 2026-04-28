@@ -13,5 +13,5 @@ void WriteColorToPPMFile(FILE * restrict fp, const Color * restrict c, uint32_t 
     uint32_t g = (uint32_t)(maxval * c->g + 0.5f);
     uint32_t b = (uint32_t)(maxval * c->b + 0.5f);
 
-    fprintf(fp, "%" PRIu32 " %" PRIu32 " %" PRIu32, r, g, b);
+    fprintf(fp, "%" PRIu32 " %" PRIu32 " %" PRIu32 "\n", r, g, b);
 }

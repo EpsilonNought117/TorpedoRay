@@ -17,6 +17,7 @@ static inline float DegreesToRadians(float degrees)
 
 // Header files
 
+#include "camera.h"
 #include "color.h"
 #include "hit_record.h"
 #include "hittable_list.h"
