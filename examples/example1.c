@@ -18,7 +18,7 @@ int main(void)
     Camera cam;
     InitCamera(
         &cam, 
-        1920, 
+        2560U, 
         (Point3){0.0f, 0.0f, 0.0f}, 
         16.0f / 10.0f, 
         1.0f, 

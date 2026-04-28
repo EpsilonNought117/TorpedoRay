@@ -26,6 +26,9 @@
         #define WIN32_LEAN_AND_MEAN
         #include <Windows.h>
 
+        /* Thread-local storage */
+        #define THREAD_LOCAL __declspec(thread)
+
         #if defined(_M_X64) || defined(_M_AMD64)
         
             #include <immintrin.h>
@@ -33,8 +36,8 @@
 
         #elif defined(_M_ARM64) || defined(_M_ARM64EC)
         
-            // TODO
-        
+            /* TODO */
+
         #else
             #error "Unsupported CPU ISA on Windows!"
         #endif
@@ -62,6 +65,9 @@
     #if defined(__GNUC__) || defined(__clang__)
 
         #include <pthread.h>
+
+        /* Thread-local storage */
+        #define THREAD_LOCAL __thread
         
         #if defined(__x86_64__)  || defined(__amd64__)  || \
             defined(__x86_64)    || defined(__amd64)
