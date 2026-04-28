@@ -1,43 +1,8 @@
 #include "../include/qrtc.h"
-#include "../headers/color.h"
-#include "../headers/ray.h"
-#include "../headers/vec3.h"
-#include "../headers/hittable_list.h"
-#include "../headers/sphere.h"
-#include "../headers/hittable.h"
 #include "../headers/qrtc_internal.h"
-#include "../headers/interval.h"
-
 #include <stdio.h>
 #include <inttypes.h>
 #include <math.h>
-
-// ------------------------------------------------------------
-
-Color RayColor(const Ray* r, const HittableList* world)
-{
-    HitRecord rec;
-
-    if (HitInHittableList(world, r, 0.0f, QRTC_INFINITY, &rec))
-    {
-        Color c = {rec.normal.x + 1.0f, rec.normal.y + 1.0f, rec.normal.z + 1.0f};
-        MulColorScalarInplace(&c, 0.5f);
-        return c;
-    }
-
-    Vec3 unit_direction = UnitVectorVec3(&(r->dir));
-    float a = 0.5f * (unit_direction.y + 1.0f);
-
-    Color white = {1.0f, 1.0f, 1.0f};
-    Color blue  = {0.5f, 0.7f, 1.0f};
-
-    Color c1 = MulColorScalar(&white, (1.0f - a));
-    Color c2 = MulColorScalar(&blue, a);
-
-    return AddColor(&c1, &c2);
-}
-
-// ------------------------------------------------------------
 
 int main(void)
 {

@@ -59,6 +59,7 @@ set(QRTC_SOURCES
     src/hittable.c
     src/hittable_list.c
     src/sphere.c
+    src/camera.c
 )
 
 # --- LIBRARY -------------------------------------------------------------------
