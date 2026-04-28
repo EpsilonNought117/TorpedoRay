@@ -22,9 +22,10 @@ int main(void)
         (Point3){0.0f, 0.0f, 0.0f}, 
         16.0f / 10.0f, 
         1.0f, 
-        2.0f
+        2.0f,
+        16U
     );
 
-    RenderCameraWorld(&cam, &world, 65535);
+    RenderCameraWorld(&cam, &world, 0xFFFFU);
     return EXIT_SUCCESS;
 }

@@ -2,6 +2,7 @@
 #define QRTC_RGB_H
 
 #include "../include/qrtc.h"
+#include "interval.h"
 
 typedef struct Color
 {
@@ -128,19 +129,6 @@ static inline void DivColorScalarInplace(Color* c1, float f)
     c1->b *= inv;
 }
 
-/**
- * clamp to [0, 1]
- */
-static inline void ClampColor(Color* c)
-{
-    c->r = (c->r < 0.0f) ? 0.0f : (c->r > 1.0f ? 1.0f : c->r);
-    c->g = (c->g < 0.0f) ? 0.0f : (c->g > 1.0f ? 1.0f : c->g);
-    c->b = (c->b < 0.0f) ? 0.0f : (c->b > 1.0f ? 1.0f : c->b);
-}
-
-/**
- * print color, assumes values are in [0, 1] range for floats
- */
 void WriteColorToPPMFile(FILE * restrict fp, const Color * restrict c, uint32_t maxval);
 
 #endif // QRTC_RGB_H

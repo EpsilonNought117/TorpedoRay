@@ -19,7 +19,7 @@ static inline float DegreesToRadians(float degrees)
 static THREAD_LOCAL uint64_t prng_state[4] = { 0 };
 
 /* Internal 64-bit SFC generator */
-static inline uint64_t random_sfc64_u64(void)
+static inline uint64_t RandomSFC64U64(void)
 {
     uint64_t out = prng_state[1] + prng_state[2] + prng_state[0];
 
@@ -32,7 +32,7 @@ static inline uint64_t random_sfc64_u64(void)
 }
 
 /* Seed current thread's generator */
-static inline void random_sfc64_seed(uint64_t seed)
+static inline void RandomSFC64Seed(uint64_t seed)
 {
     prng_state[0] = 1;
     prng_state[1] = seed;
@@ -41,14 +41,14 @@ static inline void random_sfc64_seed(uint64_t seed)
 
     /* Warm-up rounds */
     for (int i = 0; i < 16; ++i)
-        random_sfc64_u64();
+        RandomSFC64U64();
 }
 
 /* Return float in [0.0f, 1.0f) */
-static inline float random_sfc64_f32(void)
+static inline float RandomSFC64F32(void)
 {
     /* Use top 24 bits for full float mantissa precision */
-    uint32_t x = (uint32_t)(random_sfc64_u64() >> 40);
+    uint32_t x = (uint32_t)(RandomSFC64U64() >> 40);
 
     return (float)x * (1.0f / (float)(1 << 24)); /* divide by 2^24 */
 }
