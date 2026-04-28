@@ -6,7 +6,7 @@ static Color RayColor(const Ray* r, const HittableList* world)
     QRTC_ASSERT(world != NULL);
     QRTC_ASSERT(world->data != NULL);
     QRTC_ASSERT(world->capacity != 0);
-    QRTC_ASSERT(world->size != 0 && world->size < world->capacity);
+    QRTC_ASSERT(world->size != 0 && world->size <= world->capacity);
 
     HitRecord rec;
 
@@ -68,7 +68,7 @@ void InitCamera(
     /* Calculate upper-left corner of viewport */
     Vec3 focal_offset = (Vec3){ 0.0f, 0.0f, cam->focal_length };
 
-    Point3 viewport_center = AddVec3(&cam->center, &focal_offset);
+    Point3 viewport_center = SubVec3(&cam->center, &focal_offset);
 
     Vec3 half_viewport_u = DivVec3Scalar(&viewport_u, 2.0f);
     Vec3 half_viewport_v = DivVec3Scalar(&viewport_v, 2.0f);
@@ -93,7 +93,7 @@ void RenderCameraWorld(
     QRTC_ASSERT(world != NULL);
     QRTC_ASSERT(world->data != NULL);
     QRTC_ASSERT(world->capacity != 0);
-    QRTC_ASSERT(world->size != 0 && world->size < world->capacity);
+    QRTC_ASSERT(world->size != 0 && world->size <= world->capacity);
     QRTC_ASSERT(cam->image_width != 0);
     QRTC_ASSERT(cam->image_height != 0);
     QRTC_ASSERT(maxval < 65535);
