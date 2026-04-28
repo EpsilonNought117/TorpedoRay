@@ -16,19 +16,19 @@ typedef struct Interval
 // Default interval is empty: [ +inf, -inf ]
 static inline Interval interval_empty(void)
 {
-    return (Interval){ INFINITY, -INFINITY };
+    return (Interval){INFINITY, -INFINITY};
 }
 
 // Universe interval: [-inf, +inf]
 static inline Interval interval_universe(void)
 {
-    return (Interval){ -INFINITY, INFINITY };
+    return (Interval){-INFINITY, INFINITY};
 }
 
 // Constructor equivalent
 static inline Interval interval_make(float min, float max)
 {
-    return (Interval){ min, max };
+    return (Interval){min, max};
 }
 
 // size()

@@ -2,16 +2,15 @@
 
 bool Hit(
     const Hittable* hit_obj, 
-    const Ray* r, 
-    float ray_tmin, 
-    float ray_tmax, 
+    const Ray* r,
+    Interval ray_t,
     HitRecord* h_rec
 )
 {
     switch (hit_obj->type)
     {
         case SPHERE:
-            return HitSphere(&(hit_obj->obj.sphere), r, ray_tmin, ray_tmax, h_rec);
+            return HitSphere(&(hit_obj->obj.sphere), r, ray_t, h_rec);
 
         default:
             return false;

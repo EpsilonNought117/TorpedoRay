@@ -2,6 +2,7 @@
 #define QRTC_HITTABLE_LIST_H
 
 #include "hittable.h"
+#include "interval.h"
 #include <stddef.h>
 #include <stdbool.h>
 
@@ -25,11 +26,10 @@ bool AddToHittableList(
 
 void FreeHittableList(HittableList* list);
 
-bool HitInHittableList(
+bool HitObjectsInHittableList(
     const HittableList* list,
     const Ray* r,
-    float ray_tmin,
-    float ray_tmax,
+    Interval ray_t,
     HitRecord* rec
 );
 

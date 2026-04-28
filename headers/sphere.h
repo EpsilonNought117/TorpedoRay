@@ -6,6 +6,7 @@
 #include "vec3.h"
 #include "color.h"
 #include "ray.h"
+#include "interval.h"
 #include <math.h>
 
 typedef struct Sphere
@@ -22,9 +23,8 @@ Sphere InitSphere(
 
 bool HitSphere(
     const Sphere* s, 
-    const Ray* r, 
-    float ray_tmin, 
-    float ray_tmax, 
+    const Ray* r,
+    Interval ray_t, 
     HitRecord* h_rec
 );
 

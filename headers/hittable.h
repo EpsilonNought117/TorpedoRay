@@ -5,6 +5,7 @@
 #include "ray.h"
 #include "hit_record.h"
 #include "sphere.h"
+#include "interval.h"
 
 typedef enum HittableObjType
 {
@@ -26,9 +27,8 @@ typedef struct Hittable
 
 bool Hit(
     const Hittable* hit_obj, 
-    const Ray* r, 
-    float ray_tmin, 
-    float ray_tmax, 
+    const Ray* r,
+    Interval ray_t,
     HitRecord* h_rec
 );
 

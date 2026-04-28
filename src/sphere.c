@@ -10,9 +10,8 @@ Sphere InitSphere(Point3 c, float r)
 
 bool HitSphere(
     const Sphere* s, 
-    const Ray* r, 
-    float ray_tmin, 
-    float ray_tmax, 
+    const Ray* r,
+    Interval ray_t,
     HitRecord* h_rec
 )
 {
@@ -28,11 +27,11 @@ bool HitSphere(
     float sqrt_dmt = sqrtf(discriminant);
     float root = (h - sqrt_dmt) / a;
 
-    if (root <= ray_tmin || root >= ray_tmax)
+    if (root <= ray_t.min || root >= ray_t.max)
     {
         root = (h + sqrt_dmt) / a;
 
-        if (root <= ray_tmin || root >= ray_tmax)
+        if (root <= ray_t.min || root >= ray_t.max)
             return false;
     }
 

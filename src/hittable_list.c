@@ -59,21 +59,23 @@ void FreeHittableList(HittableList* list)
     list->capacity = 0;
 }
 
-bool HitInHittableList(
+bool HitObjectsInHittableList(
     const HittableList* list,
     const Ray* r,
-    float ray_tmin,
-    float ray_tmax,
+    Interval ray_t,
     HitRecord* rec
 )
 {
     HitRecord temp_rec;
     bool hit_anything = false;
-    float closest_so_far = ray_tmax;
+    float closest_so_far = ray_t.max;
+    size_t lsize = list->size;
 
-    for (size_t i = 0; i < list->size; ++i)
+    for (size_t i = 0; i < lsize; i++)
     {
-        if (Hit(&list->data[i], r, ray_tmin, closest_so_far, &temp_rec))
+        Interval temp_intvl = {ray_t.min, closest_so_far};
+
+        if (Hit(&(list->data[i]), r, temp_intvl, &temp_rec))
         {
             hit_anything = true;
             closest_so_far = temp_rec.t;
