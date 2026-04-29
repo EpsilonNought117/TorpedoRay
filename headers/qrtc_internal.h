@@ -45,12 +45,12 @@ static inline void RandomSFC64Seed(uint64_t seed)
 }
 
 /* Return float in [0.0f, 1.0f) */
-static inline float RandomSFC64F32(void)
+static inline float GetRandomFloat32(void)
 {
     /* Use top 24 bits for full float mantissa precision */
     uint32_t x = (uint32_t)(RandomSFC64U64() >> 40);
 
-    return (float)x * (1.0f / (float)(1 << 24)); /* divide by 2^24 */
+    return (float)x * (1.0f / (float)(1U << 24)); /* divide by 2^24 */
 }
 
 // Header files

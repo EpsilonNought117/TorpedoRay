@@ -7,8 +7,8 @@ static inline Vec3 SampleSquare(void)
     /* Random point in [-0.5, +0.5] × [-0.5, +0.5] */
     return (Vec3)
     {
-        RandomSFC64F32() - 0.5f,
-        RandomSFC64F32() - 0.5f,
+        GetRandomFloat32() - 0.5f,
+        GetRandomFloat32() - 0.5f,
         0.0f
     };
 }

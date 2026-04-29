@@ -99,4 +99,8 @@ endif()
 
 add_executable(example1 examples/example1.c)
 
-target_link_libraries(example1 PRIVATE qrtc m)
+if (UNIX)
+    target_link_libraries(example1 PRIVATE qrtc m)
+else()
+    target_link_libraries(example1 PRIVATE qrtc)
+endif()
