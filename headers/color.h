@@ -129,6 +129,10 @@ static inline void DivColorScalarInplace(Color* c1, float f)
     c1->b *= inv;
 }
 
+
+/**
+ * Assumes color values are clamped to [0.0f, 1.0f]
+ */
 void WriteColorToPPMFile(FILE * restrict fp, const Color * restrict c, uint32_t maxval);
 
 #endif // QRTC_RGB_H

@@ -2,6 +2,8 @@
 #define QRTC_VEC3_H
 
 #include "../include/qrtc.h"
+#include "interval.h"
+#include "qrtc_internal.h"
 
 typedef struct Vec3
 {
@@ -164,6 +166,33 @@ static inline Vec3 UnitVectorVec3(const Vec3* v)
     res.y = v->y * inv;
     res.z = v->z * inv;
     return res;
+}
+
+static inline Vec3 RandomVec3(void)
+{
+    return (Vec3){GetRandomFloat32(), GetRandomFloat32(), GetRandomFloat32()};
+}
+
+static inline Vec3 RandomVec3InRange(float min, float max)
+{
+    Interval i = {min, max};
+    float x = ClampInterval(i, GetRandomFloat32());
+    float y = ClampInterval(i, GetRandomFloat32());
+    float z = ClampInterval(i, GetRandomFloat32());
+    return (Vec3){x, y, z};
+}
+
+static inline Vec3 RandomUnitVectorVec3(void)
+{
+    while (true)
+    {
+        Vec3 p = RandomVec3InRange(-1.0f, 1.0f);
+        float lensqr_p = LengthSquaredVec3(&p);
+        if (lensqr_p > 4e-45f && lensqr_p <= 1.0f)
+        {
+            return DivVec3Scalar(&p, sqrtf(lensqr_p));
+        }
+    }
 }
 
 #endif // QRTC_VEC3_H

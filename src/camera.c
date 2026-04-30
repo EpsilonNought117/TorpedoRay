@@ -13,7 +13,7 @@ static inline Vec3 SampleSquare(void)
     };
 }
 
-static inline Ray GetRay(
+static Ray GetRay(
     const Camera* cam,
     size_t i,
     size_t j
@@ -222,6 +222,12 @@ void RenderCameraWorld(
                 &pixel_color,
                 cam->pixel_samples_scale
             );
+
+            Interval i = {0.0f, 1.0f};
+
+            pixel_color.r = ClampInterval(i, pixel_color.r);
+            pixel_color.g = ClampInterval(i, pixel_color.g);
+            pixel_color.b = ClampInterval(i, pixel_color.b);
 
             WriteColorToPPMFile(
                 stdout,

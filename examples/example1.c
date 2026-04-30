@@ -23,7 +23,7 @@ int main(void)
         16.0f / 10.0f, 
         1.0f, 
         2.0f,
-        16U
+        128U
     );
 
     RenderCameraWorld(&cam, &world, 0xFFFFU);
